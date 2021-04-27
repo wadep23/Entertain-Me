@@ -1,3 +1,24 @@
+header {
+  background-color: maroon;
+  color: goldenrod;
+  text-align: center;
+  padding: 1%;
+  border-bottom: 2px solid goldenrod;
+  box-shadow: 5px 5px 5px 5px black;
+}
+
+header h1 {
+  border-bottom: 2px solid goldenrod;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+main {
+  display: flex;
+  background-color: maroon;
+  color: goldenrod;
+}
+
 .topnav {
     background-color: #333;
     overflow: hidden;
@@ -23,4 +44,11 @@
   .topnav a.active {
     background-color: #4CAF50;
     color: white;
+  }
+
+  #side-bar-left {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
   }
