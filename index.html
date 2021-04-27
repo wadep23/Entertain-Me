@@ -14,15 +14,17 @@
 
 <body>
     <header>
+        <img src="./assets/media/pngegg.png" style="width: 175px" alt="roman helmet">
         <h1>Entertain Me!</h1>
         <h4>Your go to site when you just don't know what to watch!</h4>
     </header>
 
     <main>
         <!-- first drop down -->
-        <div id="side-bar-left">
+        <div class="side-bar-left">
             <div id="media-container">
                 <label for="media-type">Choose Your Media!</label>
+                <br>
                 <select id="media" name="media-type">
                     <option value="movie">Movie</option>
                     <option value="tv">Television</option>
@@ -32,6 +34,7 @@
             <!-- second drop down -->
             <div id="genre-container" class="hide">
                 <label for="genre">Choose a Genre!</label>
+                <br>
                 <select id="genre" name="genre">
                     <option value="action">Action</option>
                     <option value="adventure">Adventure</option>
@@ -48,6 +51,7 @@
             <!-- third drop down -->
             <div id="platform-container">
                 <label for="platform">Choose a Platform!</label>
+                <br>
                 <select name="platform">
                     <option value="theaters">In Theaters</option>
                     <option value="streaming">Streaming Service</option>
@@ -62,8 +66,12 @@
 
             <div id="similar-content"></div>
         </div>
-        <div id="media-content">
-
+        <div class="media-content">
+                <div class="results" id="foundTrailer">Trailer</div>
+                <div class="results" id="foundDetails">Details</div>
+                <div class="results" id="foundReviews">Review</div>
+                <div class="results" id="foundVotes">Votes</div>
+                <div class="results" id="foundWhereAvailable">Find it here</div>
         </div>
 
     </main>
