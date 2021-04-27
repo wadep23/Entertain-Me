@@ -1,12 +1,11 @@
 var media = document.querySelector('#media');
 var genreDropDown = document.querySelector('#genre');
-// var media = mediaDropDown.value;
+
 
 
 // Search execution function
 var searchMedia = function(){    
-    // var media = mediaDropDown.nodeValue;
-    // var tv = value.tv
+    
     if (media.value == "tv"){
         tvSearch();
     }else if (media.value == "movie"){
