@@ -23,9 +23,10 @@ var movieSearch = function(){
         if (response.ok){
             response.json()
             .then(function(data){
-                console.log(data)
+                console.log(data);
                 for (i = 0; i < data.results.length; i++) {
-                
+                    console.log(data.results[i]);
+                    data.results[i];
                 }
             });
         }else{
