@@ -106,6 +106,16 @@ $("#search").on("click", searchMedia);
 //     // need DIV to place text or links for past searches from local storage
 // }
 
+$('#search').on('click', searchMedia);
+
+// Data we need to pull
+// data.results[0].title - Movie title
+// data.results[0].poster_path - Movie poster
+// data.results[0].overview - Movie description
+// data.results[0].video - To pull a preview if available, if false loop to another API for preview.
+// data.results[0].vote_average - Movie popularity, maybe create a loop to pull a new result if popularity is below set threshold.
+// data.results.total_pages - To limit how many results the API returns to avoid too much bandwidth utilization and accomidate heavier traffic.
+
 // Setting to local storage
 // function setPrevFinds () {
 //     if (searchHistory === 5) {
