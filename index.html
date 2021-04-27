@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/media/favicon.jpg">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" 
-integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <title>Entertain Me!</title>
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
@@ -15,19 +15,21 @@ integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwr
 <body>
     <header>
         <h1>Entertain Me!</h1>
+        <h4>Your go to site when you just don't know what to watch!</h4>
     </header>
 
     <main>
-        <div id="side-bar-left"></div>
-
-        <div id="media-content">
-
-            <label for="media-type">Choose Your Media!</label>
-            <select id="media" name="media-type">
-                <option value="movie">Movie</option>
-                <option value="tv">Television</option>
-                <option value="game">Video Game</option>
-            </select>
+        <!-- first drop down -->
+        <div id="side-bar-left">
+            <div id="media-container">
+                <label for="media-type">Choose Your Media!</label>
+                <select id="media" name="media-type">
+                    <option value="movie">Movie</option>
+                    <option value="tv">Television</option>
+                    <option value="game">Video Game</option>
+                </select>
+            </div>
+            <!-- second drop down -->
             <div id="genre-container" class="hide">
                 <label for="genre">Choose a Genre!</label>
                 <select id="genre" name="genre">
@@ -43,20 +45,27 @@ integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwr
                     <option value="mystery">Mystery</option>
                 </select>
             </div>
-            <label for="platform">Choose a Platform!</label>
-            <select name="platform">
-                <option value="theaters">In Theaters</option>
-                <option value="streaming">Streaming Service</option>
-                <option value="game">Video Games</option>
-            </select>
-            <!-- next dropdown, what will it be? -->
-            <button id="search" type="button">Show Me The Money!</button>            
+            <!-- third drop down -->
+            <div id="platform-container">
+                <label for="platform">Choose a Platform!</label>
+                <select name="platform">
+                    <option value="theaters">In Theaters</option>
+                    <option value="streaming">Streaming Service</option>
+                    <option value="game">Video Games</option>
+                </select>
+                <!-- next dropdown, what will it be? -->
+                <div id="searchBtn">
+                    <button id="search" type="button">Show Me The Money!</button>
+                </div>
+                <div id="history">Previous Recomendations</div>
+            </div>
 
             <div id="similar-content"></div>
+        </div>
+        <div id="media-content">
 
         </div>
 
-        <div id="history">Previous Recomendations</div>
     </main>
 
     <div id="related-content">
@@ -66,9 +75,9 @@ integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwr
     <footer>
         <h3>Master crafted by Team Argonaut&#169;</h3>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
-    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>
