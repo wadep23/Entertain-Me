@@ -1,21 +1,21 @@
 header {
-  background-color: maroon;
+  background-color: rgb(112, 7, 7);
   color: goldenrod;
   text-align: center;
   padding: 1%;
   border-bottom: 2px solid goldenrod;
-  box-shadow: 5px 5px 5px 5px black;
 }
 
 header h1 {
   border-bottom: 2px solid goldenrod;
   margin-left: 35%;
   margin-right: 35%;
+  box-shadow: 5px 5px 5px 3px black;
 }
 
 main {
   display: flex;
-  background-color: maroon;
+  background-color: rgb(112, 7, 7);
   color: goldenrod;
 }
 
