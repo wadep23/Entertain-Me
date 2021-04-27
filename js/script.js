@@ -23,7 +23,10 @@ var movieSearch = function(){
         if (response.ok){
             response.json()
             .then(function(data){
-                console.log(data);
+                console.log(data)
+                for (i = 0; i < data.results.length; i++) {
+                
+                }
             });
         }else{
             alert('Error: ' + response.statusText);
@@ -31,8 +34,7 @@ var movieSearch = function(){
     })
     .catch(function(error){
         alert("Unable to connect to TMDB API!");
-    });
-    
+    }); 
 }
 
 // Tv search function
