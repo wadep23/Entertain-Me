@@ -15,7 +15,7 @@ var searchMedia = function(){
 $('#search').click(function(event) {
     // Movie search function
     event.preventDefault();
-    var movieUrl = 'https://api.themoviedb.org/3/movie/76341?api_key=159f40037d6a65fa5a6290ec992f31ce'
+    var movieUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce'
     var tvURL = 'https://api.themoviedb.org/3/tv/76341?api_key=159f40037d6a65fa5a6290ec992f31ce'
     var gameURL = 'https://api.rawg.io/api/platforms?key=d7bbd8310023473491e2cb8f933da6ba&'
         
@@ -24,7 +24,7 @@ $('#search').click(function(event) {
         return response.json();
         })
         .then(function(response) {
-        //console.log(response);
+        console.log(response);
         });
 
         // .catch(function(error){
@@ -35,7 +35,7 @@ $('#search').click(function(event) {
         return response.json();
         })
         .then(function(response) {
-        //console.log(response);
+        console.log(response);
         });
     fetch(gameURL)
         .then(function(response){
