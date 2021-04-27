@@ -1,23 +1,25 @@
-var media = $('#media').value;
-var genre = $('#genre').value;
+var media = document.querySelector('#media');
+var genreDropDown = document.querySelector('#genre');
+// var media = mediaDropDown.value;
+
 
 // Search execution function
-var searchMedia = function(){
-    
-    if (media == tv){
+var searchMedia = function(){    
+    // var media = mediaDropDown.nodeValue;
+    // var tv = value.tv
+    if (media.value == "tv"){
         tvSearch();
-    }else if (media == movie){
+    }else if (media.value == "movie"){
         movieSearch();
-    }else if (media == game){
+    }else if (media.value == "game"){
         gameSearch();
     }
 }
 
 // Movie search function
 var movieSearch = function(){
-    var tmdbUrl = 'https://api.themoviedb.org/3/movie/76341?api_key=159f40037d6a65fa5a6290ec992f31ce&'
-    + 
-    fetch(getCoordApi)
+    var tmdbUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc'
+    fetch(tmdbUrl)
     .then(function(response){
         if (response.ok){
             response.json()
@@ -29,7 +31,7 @@ var movieSearch = function(){
         }
     })
     .catch(function(error){
-        alert("Unable to connect to Weather API");
+        alert("Unable to connect to TMDB API!");
     });
     
 }
@@ -38,7 +40,7 @@ var movieSearch = function(){
 var tvSearch = function(){
     var tmdbUrl = 'https://api.themoviedb.org/3/movie/76341?api_key=159f40037d6a65fa5a6290ec992f31ce&'
     + 
-    fetch(getCoordApi)
+    fetch(tmdbUrl)
     .then(function(response){
     if (response.ok){
         response.json()
@@ -50,7 +52,7 @@ var tvSearch = function(){
     }
     })
     .catch(function(error){
-    alert("Unable to connect to Weather API");
+    alert("Unable to connect to TMDB API!");
     });
 
 }
@@ -59,7 +61,7 @@ var tvSearch = function(){
 var gameSearch = function (){
     var tmdbUrl = 'https://api.rawg.io/api/platforms?key=d7bbd8310023473491e2cb8f933da6ba&'
     + 
-    fetch(getCoordApi)
+    fetch(tmdbUrl)
     .then(function(response){
     if (response.ok){
         response.json()
@@ -71,7 +73,7 @@ var gameSearch = function (){
     }
     })
     .catch(function(error){
-    alert("Unable to connect to Weather API");
+    alert("Unable to connect to TMDB API!");
     });
 }
 
