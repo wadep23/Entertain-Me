@@ -12,10 +12,14 @@ var searchMedia = function () {
     }
 };
 
+// genre id
+
 // Movie search function
 var movieSearch = function () {
+    genre = genreDropDown.value;    
+
     var tmdbUrl =
-        "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
+        "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
     fetch(tmdbUrl)
         .then(function (response) {
             if (response.ok) {
@@ -47,8 +51,33 @@ var movieSearch = function () {
         // })
         .catch(function(error){
             alert("Unable to connect to TMDB API!");
-        }); 
+        });
 }
+    // .then(function(response){
+    //     if (response.ok){
+    //         response.json()
+    //         .then(function(data){
+    //             console.log(data);
+    //             for (i = 0; i < data.results.length; i++) {
+    //                 console.log(data.results[i]);
+    //                 data.results[i];
+    //             }
+    //         });
+    //     }else{
+    //         alert('Error: ' + response.statusText);
+    //     }
+    // })
+    // .catch(function(error){
+    //     alert("Unable to connect to TMDB API!");
+    // }); 
+
+// tv genre ids =
+// action & adventure - 10759
+// comedy - 35
+// drama - 18
+// mystery - 9648
+// scifi and fantasy - 10765
+
 
 // Tv search function
 var tvSearch = function () {
