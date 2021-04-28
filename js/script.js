@@ -78,7 +78,7 @@ var gameSearch = function () {
                 if (response.ok) {
                     response.json().then(function (data) {
                         console.log(data);
-                        youtube();
+                        // youtube();
                     });
                 } else {
                     alert("Error: " + response.statusText);
