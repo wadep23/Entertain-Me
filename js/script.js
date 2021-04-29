@@ -27,7 +27,7 @@ var movieSearch = function () {
                 .then(function (data) {
                     console.log(data);
                     // console.log(data.results[0]);
-                    showId = data.results[6].id;
+                    showId = data.results[i].id;
                     findId();
                 });
             } else {
@@ -117,25 +117,25 @@ var tvSearch = function () {
 //                 alert("Unable to connect to RAWG API!");
 //             });
 // };
-var movieSearch = function () {
-    genre = genreDropDown.value;    
+// var movieSearch = function () {
+//     genre = genreDropDown.value;    
 
-    var tmdbUrl =
-        "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
-    fetch(tmdbUrl)
-        .then(function (response) {
-            if (response.ok) {
-                response.json()
-                .then(function (data) {
-                    console.log(data);
-                    // console.log(data.results[0]);
-                    showId = data.results[6].id;
-                    findId();
-                });
-            } else {
-                alert("Error: " + response.statusText);
-            }
-        }) 
+//     var tmdbUrl =
+//         "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
+//     fetch(tmdbUrl)
+//         .then(function (response) {
+//             if (response.ok) {
+//                 response.json()
+//                 .then(function (data) {
+//                     console.log(data);
+//                     // console.log(data.results[0]);
+//                     showId = data.results[6].id;
+//                     findId();
+//                 });
+//             } else {
+//                 alert("Error: " + response.statusText);
+//             }
+//         }) 
 var findId = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/movie/" + showId + "?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
