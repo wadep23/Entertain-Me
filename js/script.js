@@ -26,8 +26,8 @@ var movieSearch = function () {
                 response.json()
                 .then(function (data) {
                     console.log(data);
-                    // console.log(data.results[0]);
-                    showId = data.results[6].id;
+                    console.log(data.results[0]);
+                    
                     findId();
                 });
             } else {
