@@ -25,7 +25,7 @@ var movieSearch = function(){
             .then(function(data){
                 console.log(data);
                 for (i = 0; i < data.results.length; i++) {
-                    console.log(data.results[i]);
+                    console.log(data.results[i].genre_ids);
                     data.results[i];
                 }
             });
