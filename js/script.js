@@ -27,7 +27,11 @@ var movieSearch = function () {
                 .then(function (data) {
                     console.log(data);
                     // console.log(data.results[0]);
-                    showId = data.results[i].id;
+                    for (i = 0; i < data.results.length; i++) {
+                        console.log(data.results[i]);
+                        let randomValue = data.results[Math.floor(Math.random() * data.results.length)];
+                        showId = randomValue;
+                    }
                     findId();
                 });
             } else {
@@ -99,43 +103,24 @@ var tvSearch = function () {
 };
 
 // Game search function
-// var gameSearch = function () {
-//     var rawgUrl =
-//         "https://api.rawg.io/api/games?key=d7bbd8310023473491e2cb8f933da6ba";
-//         fetch(rawgUrl)
-//             .then(function (response) {
-//                 if (response.ok) {
-//                     response.json().then(function (data) {
-//                         console.log(data);
-//                         // youtube();
-//                     });
-//                 } else {
-//                     alert("Error: " + response.statusText);
-//                 }
-//             })
-//             .catch(function (error) {
-//                 alert("Unable to connect to RAWG API!");
-//             });
-// };
-// var movieSearch = function () {
-//     genre = genreDropDown.value;    
-
-//     var tmdbUrl =
-//         "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
-//     fetch(tmdbUrl)
-//         .then(function (response) {
-//             if (response.ok) {
-//                 response.json()
-//                 .then(function (data) {
-//                     console.log(data);
-//                     // console.log(data.results[0]);
-//                     showId = data.results[6].id;
-//                     findId();
-//                 });
-//             } else {
-//                 alert("Error: " + response.statusText);
-//             }
-//         }) 
+var gameSearch = function () {
+    var rawgUrl =
+        "https://api.rawg.io/api/games?key=d7bbd8310023473491e2cb8f933da6ba";
+        fetch(rawgUrl)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (data) {
+                        console.log(data);
+                        // youtube();
+                    });
+                } else {
+                    alert("Error: " + response.statusText);
+                }
+            })
+            .catch(function (error) {
+                alert("Unable to connect to RAWG API!");
+            });
+};
 var findId = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/movie/" + showId + "?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
