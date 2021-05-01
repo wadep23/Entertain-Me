@@ -27,12 +27,18 @@ var movieSearch = function () {
                 .then(function (data) {
                     console.log(data);
                     // console.log(data.results[0]);
-                    showId = data.results[6].id;
+                    showId = data.results[0].id;
                     findId();
+                    movieName = data.results[0].title;
+                    moviePoster = data.results[0].poster_path;
+                    movieDetails = data.results[0].overview;
+                    movieRating = data.results[0].vote_average;
+                    console.log(moviePoster);
+                    createElements();
                 });
             } else {
                 alert("Error: " + response.statusText);
-            }
+            }        
         })       
 
         // .then(function(response){
@@ -49,9 +55,9 @@ var movieSearch = function () {
         //         alert('Error: ' + response.statusText);
         //     }
         // })
-        .catch(function(error){
-            alert("Unable to connect to TMDB API!");
-        });
+        // .catch(function(error){
+        //     alert("Unable to connect to TMDB API!");
+        // });
 }
     // .then(function(response){
     //     if (response.ok){
@@ -125,8 +131,7 @@ var findId = function () {
                 if (response.ok) {
                     response.json().then(function (data) {
                         console.log(data);
-                        // imdbId = data.results
-                        // showPreview();
+                        findServices();
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -136,6 +141,38 @@ var findId = function () {
                 alert("Unable to connect to TMDB!");
             });
 };
+var findServices = function () {
+    var previewUrl =
+        "https://api.themoviedb.org/3/movie/" + showId + "/watch/providers?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
+        fetch(previewUrl)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (data) {
+                        console.log(data);
+                         services = data.results.US.flatrate[0].provider_name;
+                         console.log(services);
+                        createElements();
+                    });
+                } else {
+                    alert("Error: " + response.statusText);
+                }
+            })
+            .catch(function (error) {
+                alert("Unable to connect to TMDB!");
+            });
+};
+
+var createElements = function(){
+    $('#foundDetails').html(movieDetails);
+    $('#foundVotes').html("Entertain Me! Score: " + movieRating + "/10");
+    $('#moviePoster').attr('src', 'https://image.tmdb.org/t/p/w500' + moviePoster);
+    $('#title').html(movieName);
+    $('#foundWhereAvailable').html(services);
+    
+    
+}
+
+
 
 // var showPreview = function () {
 //     var previewUrl =
