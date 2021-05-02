@@ -89,7 +89,10 @@ var movieSearch = function () {
                     
                     findId();
                     // console.log(moviePoster);
-                    createElements();
+                    // findId();
+
+                    findServices();
+
                 });
             } else {
                 alert("Error: " + response.statusText);
@@ -137,13 +140,14 @@ var movieSearch = function () {
 
 // Tv search function
 var tvSearch = function () {
+    genre = genreDropDown.value;
     var tmdbUrl =
-        "https://api.themoviedb.org/3/discover/tv?api_key=159f40037d6a65fa5a6290ec992f31ce&"; +
+        "https://api.themoviedb.org/3/discover/tv?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
         fetch(tmdbUrl)
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
-                        // console.log(data);
+                        console.log(data);
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -181,7 +185,7 @@ var findId = function () {
                 if (response.ok) {
                     response.json().then(function (data) {
                         // console.log(data);
-                        findServices();
+                        // findServices();
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -199,14 +203,15 @@ var findServices = function () {
                 if (response.ok) {
                     response.json().then(function (data) {
                         console.log(data);
-                         servicesArray = data.results.US;                         
-                        //  console.log(data.results.US.buy[provider_name]);
+                        servicesArray = [];
                         // findProvider(data);
                         for (i = 0; i < data.results.US.buy.length; i++){
                             providerName = data.results.US.buy[i].provider_name;
                             //console.log(data.results.US.buy.length)
                             console.log(providerName);
+                            servicesArray.push(providerName);
                         }
+                        console.log(servicesArray);
                         createElements();
                         
                     });
@@ -224,8 +229,7 @@ var createElements = function(){
     $('#foundVotes').html("Entertain Me! Score: " + movieRating + "/10");
     $('#moviePoster').attr('src', 'https://image.tmdb.org/t/p/w500' + moviePoster);
     $('#title').html(movieName);
-    console.log(providerName);
-    $('#foundWhereAvailable').html(providerName);
+    $('#foundWhereAvailable').html(servicesArray);
     
     
 }
