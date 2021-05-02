@@ -97,46 +97,8 @@ var movieSearch = function () {
             } else {
                 alert("Error: " + response.statusText);
             }        
-        })       
-
-        // .then(function(response){
-        //     if (response.ok){
-        //         response.json()
-        //         .then(function(data){
-        //             console.log(data);
-        //             for (i = 0; i < data.results.length; i++) {
-        //                 console.log(data.results[i]);
-        //                 data.results[i];
-        //             }
-        //         });
-        //     }else{
-        //         alert('Error: ' + response.statusText);
-        //     }
-        // })
-        // .catch(function(error){
-        //     alert("Unable to connect to TMDB API!");
-        // });
-}
-    // .then(function(response){
-    //     if (response.ok){
-    //         response.json()
-    //         .then(function(data){
-    //             console.log(data);
-    //             for (i = 0; i < data.results.length; i++) {
-    //                 console.log(data.results[i]);
-    //                 data.results[i];
-    //             }
-    //         });
-    //     }else{
-    //         alert('Error: ' + response.statusText);
-    //     }
-    // })
-    // .catch(function(error){
-    //     alert("Unable to connect to TMDB API!");
-    // }); 
-
-// tv genre ids =
-
+        })
+};
 
 // Tv search function
 var tvSearch = function () {
@@ -166,8 +128,22 @@ var gameSearch = function () {
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
-                        // console.log(data);
+                        console.log(data);
                         // youtube();
+                    //     randomId = data.results[Math.floor(Math.random() * data.results.length)]
+                    // console.log(randomId);
+                    
+                    // showId = randomId.id;
+                    // movieName = randomId.title;
+                    // moviePoster = randomId.poster_path;
+                    // movieDetails = randomId.overview;
+                    // movieRating = randomId.vote_average;
+                    
+                    // findId();
+                    // // console.log(moviePoster);
+                    // // findId();
+
+                    // findServices();
                     });
                 } else {
                     alert("Error: " + response.statusText);
