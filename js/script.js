@@ -59,7 +59,7 @@ var movieSearch = function () {
                 response.json()
                 .then(function (data) {
                     // console.log(data);
-                    console.log(data.results[0]);
+                    console.log(data.results);
                     // for (i = 0; i < data.results.length; i++){
                     //     movieResult = data.results[i];
                     //     //console.log(data.results.US.buy.length)
@@ -67,13 +67,14 @@ var movieSearch = function () {
                     //     servicesArray.push(providerName);
                     //     // providers = JSON.parse(servicesArray);
                     // }
-                    showId = data.results[0].id;
-                    movieName = data.results[0].title;
-                    moviePoster = data.results[0].poster_path;
-                    movieDetails = data.results[0].overview;
-                    movieRating = data.results[0].vote_average;
+                    showId = data.results[6].id;
+                    movieName = data.results[6].title;
+                    moviePoster = data.results[6].poster_path;
+                    movieDetails = data.results[6].overview;
+                    movieRating = data.results[6].vote_average;
                     // console.log(moviePoster);
-                    findId();
+                    // findId();
+
                     findServices();
 
                 });
@@ -167,7 +168,7 @@ var findId = function () {
                 if (response.ok) {
                     response.json().then(function (data) {
                         // console.log(data);
-                        findServices();
+                        // findServices();
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -185,17 +186,15 @@ var findServices = function () {
                 if (response.ok) {
                     response.json().then(function (data) {
                         console.log(data);
-                         servicesArray = [];                         
-                        //  console.log(data.results.US.buy[provider_name]);
+                        servicesArray = [];
                         // findProvider(data);
                         for (i = 0; i < data.results.US.buy.length; i++){
                             providerName = data.results.US.buy[i].provider_name;
                             //console.log(data.results.US.buy.length)
-                            // console.log(providerName);
+                            console.log(providerName);
                             servicesArray.push(providerName);
-                            // providers = JSON.parse(servicesArray);
                         }
-                        // console.log(servicesArray);
+                        console.log(servicesArray);
                         createElements();
                         
                     });
