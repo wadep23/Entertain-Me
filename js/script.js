@@ -71,13 +71,13 @@ var movieSearch = function () {
     genre = genreDropDown.value;
 
     var tmdbUrl =
-        "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
+        "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&region=US&with_genres=" + genre;
     fetch(tmdbUrl)
         .then(function (response) {
             if (response.ok) {
                 response.json()
                 .then(function (data) {
-                    // console.log(data);
+                    console.log(data);
                     // console.log(data.results[0]);
 
                     randomId = data.results[Math.floor(Math.random() * data.results.length)]
@@ -90,6 +90,8 @@ var movieSearch = function () {
                     movieRating = randomId.vote_average;
                     
                     findIdMovie();
+
+
                     // console.log(moviePoster);
                     // findId();
 
@@ -218,15 +220,25 @@ var findServicesMovies = function () {
                         console.log(data);
                         servicesArray = [];
                         // findProvider(data);
-                        for (i = 0; i < data.results.US.buy.length; i++){
-                            providerName = data.results.US.buy[i].provider_name;
-                            //console.log(data.results.US.buy.length)
-                            console.log(providerName);
-                            servicesArray.push(providerName);
+                        if (data.results.US.buy == true){
+                            for (i = 0; i < data.results.US.buy.length; i++){
+                                providerName = data.results.US.buy[i].provider_name;
+                                //console.log(data.results.US.buy.length)
+                                console.log(providerName);
+                                servicesArray.push(providerName);
+                            }
+                            console.log(servicesArray);
+                            createElements();
+                        }else if (data.results.US.flatrate == true){
+                            for (i = 0; i < data.results.US.flatrate.length; i++){
+                                providerName = data.results.US.flatrate[i].provider_name;
+                                //console.log(data.results.US.buy.length)
+                                console.log(providerName);
+                                servicesArray.push(providerName);
+                            }
+                            console.log(servicesArray);
+                            createElements();
                         }
-                        console.log(servicesArray);
-                        createElements();
-                        
                     });
                 } else {
                     alert("Error: " + response.statusText);
