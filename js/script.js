@@ -167,21 +167,23 @@ var gameSearch = function () {
         if (response.ok) {
             response.json().then(function (data) {
                 console.log(data);
-                // youtube();
-                //     randomId = data.results[Math.floor(Math.random() * data.results.length)]
-                // console.log(randomId);
+                randomId = data.results[Math.floor(Math.random() * data.results.length)]
+                console.log(randomId);
                 
-                // showId = randomId.id;
-                // movieName = randomId.title;
-                // moviePoster = randomId.poster_path;
-                // movieDetails = randomId.overview;
-                // movieRating = randomId.vote_average;
+                gameId = randomId.id;
+                console.log(gameId);
+                gameName = randomId.name;
+                console.log(gameName);
+                gamePoster = randomId.background_image;
+                console.log(gamePoster);
+                gameRating = randomId.metacritic;
+                console.log(gameRating);
                 
+                // gameDetails = randomId.overview;
                 // findId();
-                // // console.log(moviePoster);
-                // // findId();
                 
                 // findServices();
+                createGameElements();
             });
         } else {
             alert("Error: " + response.statusText);
@@ -230,6 +232,7 @@ var findIdTv = function () {
         alert("Unable to connect to TMDB!");
     });
 };
+
 
 var findServicesMovies = function () {
     var previewUrl =
@@ -309,7 +312,12 @@ var createElements = function(){
     $('#title').html(movieName);
     $('#foundWhereAvailable').html(servicesArray);
     
-    
+};
+
+var createGameElements = function() {
+    $('#moviePoster').attr('src', gamePoster);
+    $('#title').html(gameName);
+    $('#foundVotes').html("Entertain Me! Score: " + gameRating/10 + "/10");
 }
 
 // var findProvider = function(data){
