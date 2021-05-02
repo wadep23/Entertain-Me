@@ -233,28 +233,41 @@ var findIdTv = function () {
 
 var findServicesMovies = function () {
     var previewUrl =
-    "https://api.themoviedb.org/3/movie/" + showId + "/watch/providers?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
-    fetch(previewUrl)
-    .then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                console.log(data);
-                servicesArray = [];
-                // findProvider(data);
-                for (i = 0; i < data.results.US.buy.length; i++){
-                    providerName = data.results.US.buy[i].provider_name;
-                    //console.log(data.results.US.buy.length)
-                    console.log(providerName);
-                    servicesArray.push(providerName);
+        "https://api.themoviedb.org/3/movie/" + showId + "/watch/providers?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
+        fetch(previewUrl)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (data) {
+                        console.log(data);
+                        servicesArray = [];
+                        // findProvider(data);
+                        if (data.results.US.buy == true){
+                            for (i = 0; i < data.results.US.buy.length; i++){
+                                providerName = data.results.US.buy[i].provider_name;
+                                //console.log(data.results.US.buy.length)
+                                console.log(providerName);
+                                servicesArray.push(providerName);
+                            }
+                            console.log(servicesArray);
+                            createElements();
+                        }else if (data.results.US.flatrate == true){
+                            for (i = 0; i < data.results.US.flatrate.length; i++){
+                                providerName = data.results.US.flatrate[i].provider_name;
+                                //console.log(data.results.US.buy.length)
+                                console.log(providerName);
+                                servicesArray.push(providerName);
+                            }
+                            console.log(servicesArray);
+                            createElements();
+                        }
+                    });
+                } else {
+                    alert("Error: " + response.statusText);
                 }
                 console.log(servicesArray);
                 createElements();
                 
-            });
-        } else {
-            alert("Error: " + response.statusText);
-        }
-    })
+            })        
     .catch(function (error) {
         alert("Unable to connect to TMDB!");
     });
