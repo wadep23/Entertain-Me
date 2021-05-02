@@ -1,8 +1,10 @@
 var media = document.querySelector("#media");
 var genreDropDown = document.querySelector("#genre");
 var platform = document.querySelector("#platform");
+var servicesArray = [];
 
 media.onchange = function() {
+    // document.getElementById('genre').selectedIndex = 0;
     if (media.value === "movie") {
         genre.innerHTML = 
         `<option value="28">Action</option>
@@ -123,7 +125,7 @@ var tvSearch = function () {
                         console.log(showId);
 
                         createElements();
-                        findIdTv();
+                        findIdTv(tvSearch);
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -195,7 +197,7 @@ var findIdTv = function () {
                 if (response.ok) {
                     response.json().then(function (data) {
                         console.log(data);
-                        findServicestv();
+                        findServicestv(findIdTv);
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -245,14 +247,14 @@ var findServicestv = function () {
                         console.log(data);
                         servicesArray = [];
                         // findProvider(data);
-                        // for (i = 0; i < data.results.US.buy.length; i++){
-                        //     providerName = data.results.US.buy[i].provider_name;
-                        //     //console.log(data.results.US.buy.length)
-                        //     console.log(providerName);
-                        //     servicesArray.push(providerName);
-                        // }
+                        for (i = 0; i < data.results.US.flatrate.length; i++){
+                            providerName = data.results.US.flatrate[i].provider_name;
+                            //console.log(data.results.US.buy.length)
+                            servicesArray.push(providerName);
+                            console.log(providerName);
+                        }
                         console.log(servicesArray);
-                        createElements();
+                        createElements(findServicestv);
                         
                     });
                 } else {
@@ -269,7 +271,7 @@ var createElements = function(){
     $('#foundVotes').html("Entertain Me! Score: " + movieRating + "/10");
     $('#moviePoster').attr('src', 'https://image.tmdb.org/t/p/w500' + moviePoster);
     $('#title').html(movieName);
-    // $('#foundWhereAvailable').html(servicesArray);
+    $('#foundWhereAvailable').html(servicesArray);
     
     
 }
