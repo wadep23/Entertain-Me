@@ -32,6 +32,18 @@ select {
 
 button {
   margin-top: 5%;
+  box-shadow: 5px 5px 3px black;
+  background-color: rgb(112, 7, 7);
+  color: goldenrod;
+  border: 2px solid goldenrod;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: goldenrod;
+  color: rgb(112, 7, 7);
+  font-weight: bold;
+  border: 3px solid rgb(112, 7, 7);
 }
 
 .media-content {
