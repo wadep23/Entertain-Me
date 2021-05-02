@@ -66,7 +66,7 @@ var searchMedia = function () {
 
 // Movie search function
 var movieSearch = function () {
-    genre = genreDropDown.value;    
+    genre = genreDropDown.value;
 
     var tmdbUrl =
         "https://api.themoviedb.org/3/discover/movie?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
@@ -87,11 +87,11 @@ var movieSearch = function () {
                     movieDetails = randomId.overview;
                     movieRating = randomId.vote_average;
                     
-                    findId();
+                    findIdMovie();
                     // console.log(moviePoster);
                     // findId();
 
-                    findServices();
+                    // findServices();
 
                 });
             } else {
@@ -103,13 +103,27 @@ var movieSearch = function () {
 // Tv search function
 var tvSearch = function () {
     genre = genreDropDown.value;
+    
     var tmdbUrl =
         "https://api.themoviedb.org/3/discover/tv?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
         fetch(tmdbUrl)
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
-                        console.log(data);
+                        // console.log(data);
+                        randomId = data.results[Math.floor(Math.random() * data.results.length)]
+                        console.log(randomId);
+                        
+                        showId = randomId.id;
+                        movieName = randomId.name;
+                        moviePoster = randomId.poster_path;
+                        movieDetails = randomId.overview;
+                        movieRating = randomId.vote_average;
+
+                        console.log(showId);
+
+                        createElements();
+                        findIdTv();
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -153,15 +167,16 @@ var gameSearch = function () {
                 alert("Unable to connect to RAWG API!");
             });
 };
-var findId = function () {
+
+var findIdMovie = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/movie/" + showId + "?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
         fetch(previewUrl)
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
-                        // console.log(data);
-                        // findServices();
+                        console.log(data);
+                        findServicesMovies();
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -171,7 +186,27 @@ var findId = function () {
                 alert("Unable to connect to TMDB!");
             });
 };
-var findServices = function () {
+
+var findIdTv = function () {
+    var previewUrl =
+        "https://api.themoviedb.org/3/tv/" + showId + "?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
+        fetch(previewUrl)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (data) {
+                        console.log(data);
+                        findServicestv();
+                    });
+                } else {
+                    alert("Error: " + response.statusText);
+                }
+            })
+            .catch(function (error) {
+                alert("Unable to connect to TMDB!");
+            });
+};
+
+var findServicesMovies = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/movie/" + showId + "/watch/providers?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
         fetch(previewUrl)
@@ -200,12 +235,41 @@ var findServices = function () {
             });
 };
 
+var findServicestv = function () {
+    var previewUrl =
+        "https://api.themoviedb.org/3/tv/" + showId + "/watch/providers?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
+        fetch(previewUrl)
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (data) {
+                        console.log(data);
+                        servicesArray = [];
+                        // findProvider(data);
+                        // for (i = 0; i < data.results.US.buy.length; i++){
+                        //     providerName = data.results.US.buy[i].provider_name;
+                        //     //console.log(data.results.US.buy.length)
+                        //     console.log(providerName);
+                        //     servicesArray.push(providerName);
+                        // }
+                        console.log(servicesArray);
+                        createElements();
+                        
+                    });
+                } else {
+                    alert("Error: " + response.statusText);
+                }
+            })
+            .catch(function (error) {
+                alert("Unable to connect to TMDB!");
+            });
+};
+
 var createElements = function(){
     $('#foundDetails').html(movieDetails);
     $('#foundVotes').html("Entertain Me! Score: " + movieRating + "/10");
     $('#moviePoster').attr('src', 'https://image.tmdb.org/t/p/w500' + moviePoster);
     $('#title').html(movieName);
-    $('#foundWhereAvailable').html(servicesArray);
+    // $('#foundWhereAvailable').html(servicesArray);
     
     
 }
