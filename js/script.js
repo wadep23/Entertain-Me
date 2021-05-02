@@ -42,7 +42,10 @@ media.onchange = function() {
         genre.innerHTML =
         `<option value="">FPS</option>`;
         platform.innerHTML = 
-        `<option value="">XBOX</option>`
+        `<option value="">XBOX</option>
+        <option value="">PlayStation</option>
+        <option value="">Switch</option>
+        <option value="">PC</option>`
     }
     
 };
