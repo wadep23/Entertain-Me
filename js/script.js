@@ -16,7 +16,7 @@ media.onchange = function() {
         <option value="9648">Mystery</option>`;
         platform.innerHTML = 
         `<option value="theaters">In Theaters</option>
-        <options value="streaming">Streaming Service</options>`;
+        <option value="streaming">Streaming Service</option>`;
     } else if (media.value == "tv") {
         genre.innerHTML = 
         `<option value="10759">Action/Adventure</option>
@@ -33,8 +33,8 @@ media.onchange = function() {
         <option value="10765">Sci-Fi & Fantasy</option>
         <option value="10766">Soap</option>                    
         <option value="10767">Talk</option>
-        <options value="10768">War & Politics</options>
-        <options value="37">Western</options>`;
+        <option value="10768">War & Politics</option>
+        <option value="37">Western</option>`;
         platform.innerHTML = 
         `<option value="Streaming Service">Streaming Service</option>
         `
