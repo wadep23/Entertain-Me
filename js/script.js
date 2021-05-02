@@ -124,8 +124,9 @@ var movieSearch = function () {
 
 // Tv search function
 var tvSearch = function () {
+    genre = genreDropDown.value;
     var tmdbUrl =
-        "https://api.themoviedb.org/3/discover/tv?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US"; +
+        "https://api.themoviedb.org/3/discover/tv?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&with_genres=" + genre;
         fetch(tmdbUrl)
             .then(function (response) {
                 if (response.ok) {
