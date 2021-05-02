@@ -60,11 +60,7 @@ var movieSearch = function () {
                 .then(function (data) {
                     // console.log(data);
                     // console.log(data.results[0]);
-                    for (i = 0; i < data.results.length; i++) {
-                        console.log(data.results[i]);
-                        let randomValue = data.results[Math.floor(Math.random() * data.results.length)];
-                        showId = randomValue;
-                    }
+                    showId = data.results[6].id;
                     findId();
                     movieName = data.results[6].title;
                     moviePoster = data.results[6].poster_path;
