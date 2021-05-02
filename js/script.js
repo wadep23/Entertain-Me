@@ -77,12 +77,17 @@ var movieSearch = function () {
                 .then(function (data) {
                     // console.log(data);
                     // console.log(data.results[0]);
-                    showId = data.results[6].id;
+
+                    randomId = data.results[Math.floor(Math.random() * data.results.length)]
+                    console.log(randomId);
+                    
+                    showId = randomId.id;
+                    movieName = randomId.title;
+                    moviePoster = randomId.poster_path;
+                    movieDetails = randomId.overview;
+                    movieRating = randomId.vote_average;
+                    
                     findId();
-                    movieName = data.results[6].title;
-                    moviePoster = data.results[6].poster_path;
-                    movieDetails = data.results[6].overview;
-                    movieRating = data.results[6].vote_average;
                     // console.log(moviePoster);
                     createElements();
                 });
