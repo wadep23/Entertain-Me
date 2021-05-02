@@ -244,7 +244,7 @@ var findServicesMovies = function () {
                         console.log(data);
                         servicesArray = [];
                         // findProvider(data);
-                        if (data.results.US.buy == true){
+                        // if (data.results.US.buy == true && data.results.US.flatrate == false){
                             for (i = 0; i < data.results.US.buy.length; i++){
                                 providerName = data.results.US.buy[i].provider_name;
                                 //console.log(data.results.US.buy.length)
@@ -252,17 +252,18 @@ var findServicesMovies = function () {
                                 servicesArray.push(providerName);
                             }
                             console.log(servicesArray);
+                            // for (i = 0; i < data.results.US.flatrate.length; i++){
+                            //     providerName = data.results.US.flatrate[i].provider_name;
+                            //     //console.log(data.results.US.buy.length)
+                            //     console.log(providerName);
+                            //     servicesArray.push(providerName);
+                            //     servicesAsString = servicesArray.join(', ');
+                            // }
+                            // createElements();
+                        // }else if (data.results.US.flatrate == true && data.results.US.buy == false){
+                            // console.log(servicesArray);
                             createElements();
-                        }else if (data.results.US.flatrate == true){
-                            for (i = 0; i < data.results.US.flatrate.length; i++){
-                                providerName = data.results.US.flatrate[i].provider_name;
-                                //console.log(data.results.US.buy.length)
-                                console.log(providerName);
-                                servicesArray.push(providerName);
-                            }
-                            console.log(servicesArray);
-                            createElements();
-                        }
+                        // }
                     });
                 } else {
                     alert("Error: " + response.statusText);
@@ -307,10 +308,17 @@ var findServicestv = function () {
 
 var createElements = function(){
     $('#foundDetails').html(movieDetails);
+    $('#foundDetails').css({'width':'300px', 'height':'500px', 'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px' });
     $('#foundVotes').html("Entertain Me! Score: " + movieRating + "/10");
+    $('#foundVotes').css({'height':'100px', 'width':'200px', 'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px' });
     $('#moviePoster').attr('src', 'https://image.tmdb.org/t/p/w500' + moviePoster);
+    $('#moviePoster').css({'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px', 
+    'padding':'10px', 'align-content':'center'});
     $('#title').html(movieName);
-    $('#foundWhereAvailable').html(servicesArray);
+    $('#title').css({'height':'100px', 'width':'200px', 'text-align':'center'});
+    $('#foundWhereAvailable').html(servicesArray.toString());
+    $('#foundWhereAvailable').css({'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px' });
+
     
 };
 

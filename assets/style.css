@@ -46,20 +46,29 @@ button:hover {
   font-weight: bold;
   border: 3px solid rgb(112, 7, 7);
 }
+footer{
+  text-align: center;
+  height: 50px;
+  justify-content: center;
+}
+
 
 .media-content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .results {
   margin: 2%;
   display: flex;
+  padding: 10px;
+  text-align: center;
 }
 
-.trailer-details {
+/* .trailer-details {
   flex-direction: row;
-}
+} */
 
 .searchParam {
   width: max-content;
@@ -71,37 +80,37 @@ button:hover {
   display: flex;
 }
 
-#foundTrailer {
+/* #foundTrailer {
   height: 400px;
   width: 400px;
   border: 2px solid black;
-}
+} */
 
-#foundDetails {
+/* #foundDetails {
   height: 400px;
   width: 400px;
   border: 2px solid black;
-}
+} */
 
-#foundReviews {
+/* #foundReviews {
   height: 400px;
   width: 400px;
   border: 2px solid black;
-}
+} */
 
-#foundVotes {
+/* #foundVotes {
   height: 400px;
   width: 400px;
   border: 2px solid black;
-}
+} */
 
-#moviePoster {
+/* #moviePoster {
   height: 50%;
   width: 50%;
   margin-left: 1%;
   border: 2px solid goldenrod;
   box-shadow: 3px 3px 3px 3px black;
-}
+} */
 
 .topnav {
     background-color: #333;
