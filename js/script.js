@@ -1,6 +1,39 @@
 var media = document.querySelector("#media");
 var genreDropDown = document.querySelector("#genre");
 
+media.onchange = function() {
+    if (media.value === "movie") {
+        genre.innerHTML = 
+        `<option value="28">Action</option>
+        <option value="12">Adventure</option>
+        <option value="35">Comedy</option>
+        <option value="10749">Romance</option>
+        <option value="878">Sci-Fi</option>
+        <option value="27">Horror</option>                    
+        <option value="18">Drama</option>
+        <option value="14">Fantasy</option>
+        <option value="9648">Mystery</option>`
+    } else if (media.value == "tv") {
+        genre.innerHTML = 
+        `<option value="10759">Action/Adventure</option>
+        <option value="12">Adventure</option>
+        <option value="35">Comedy</option>
+        <option value="10749">Romance</option>
+        <option value="10765">Sci-Fi & Fantasy</option>
+        <option value="27">Horror</option>                    
+        <option value="18">Drama</option>
+        <option value="9648">Mystery</option>`
+    } else if (media.value == "game") {
+        genre.innerHTML =
+        `<option value="">FPS</option>`
+    } else {
+        genre.innerHTML =
+        `<option value""></option>`
+    }
+    
+};
+
+
 // Search execution function
 var searchMedia = function () {
     if (media.value == "tv") {
@@ -86,11 +119,6 @@ var movieSearch = function () {
     // }); 
 
 // tv genre ids =
-// action & adventure - 10759
-// comedy - 35
-// drama - 18
-// mystery - 9648
-// scifi and fantasy - 10765
 
 
 // Tv search function
