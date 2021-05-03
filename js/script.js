@@ -82,10 +82,19 @@ var searchMedia = function () {
     }
 };
 
-// genre id
+var searchPastMedia = function (mediaInfo) {
+    console.log(mediaInfo);
+    if (mediaInfo.Type == "tv") {
+        pastTv();
+    } else if (searches[i].Type == "movie") {
+        // pastMovie();
+    } else if (searches[i].Type == "game") {
+        // pastGame();
+    }
+};
 
 // Movie search function
-var movieSearch = function (media) {
+var movieSearch = function () {
     genre = genreDropDown.value;
     
     var tmdbUrl =
@@ -96,6 +105,7 @@ var movieSearch = function (media) {
             response.json().then(function (data) {
                 // console.log(data);
                 // console.log(data.results[0]);
+                var mediaType = media.value;
                 
                 randomId =
                 data.results[Math.floor(Math.random() * data.results.length)];
@@ -114,7 +124,8 @@ var movieSearch = function (media) {
                 // findServices();
                 var showInfo = {
                     ID: showId,
-                    Title: movieName
+                    Title: movieName,
+                    Type: mediaType
                 }
                 setPreviousSearches(showInfo);
             });
@@ -147,10 +158,12 @@ var tvSearch = function () {
                 movieRating = randomId.vote_average;
                 
                 console.log(showId);
+                var mediaType = media.value;
 
                 var showInfo = {
                     ID: showId,
-                    Title: movieName
+                    Title: movieName,
+                    Type: mediaType
                 }
                 
                 createElements();
@@ -194,12 +207,14 @@ var gameSearch = function () {
                 console.log(gamePoster);
                     gameRating = randomId.metacritic;
                     console.log(gameRating);
+                    var mediaType = media.value;
 
                     // gameDetails = randomId.overview;
                     // findId();
                     var gameInfo = {
                         ID: gameId,
-                        Title: gameName
+                        Title: gameName,
+                        Type: mediaType
                     }
                     // findServices();
                     createGameElements();
@@ -331,6 +346,36 @@ var findServicestv = function () {
         });
 };
 
+var pastTv = function (mediaInfo) {
+    console.log("hi");
+    // var Id = searches[i].ID;
+    
+    // var tmdbUrl =
+    // fetch(tmdbUrl).then(function (response) {
+    //     if (response.ok) {
+    //         response.json().then(function (data) {
+
+                                
+    //             console.log(Id);
+                
+    //             showId = id.id;
+    //             movieName = id.title;
+    //             moviePoster = id.poster_path;
+    //             movieDetails = id.overview;
+    //             movieRating = id.vote_average;
+                
+    //             findIdMovie();
+    //             // console.log(moviePoster);
+    //             // findId();
+                
+    //             // findServices();
+    //         });
+    //     } else {
+    //         alert("Error: " + response.statusText);
+    //     }
+    // });
+}
+
 var createElements = function () {
     $("#foundDetails").html(movieDetails);
     $("#foundDetails").css({
@@ -401,11 +446,6 @@ var createGameElements = function () {
 //             });
 // };
 
-$("#search").on("click", function() {
-    searchMedia();
-    grabPrevSearches();
-});
-
 // starting localStorage functions
 function setPreviousSearches(id) {
     if (searches.length === 5) {
@@ -426,39 +466,56 @@ function grabPrevSearches() {
         searches = JSON.parse(previousSearch);
         for (var i = 0; i < searches.length; i++) {
             // Add buttons to reference previously searched cities
-            previousSearches += `<button id="lastSearch" class="prvSearch">${searches[i].Title}</button>`;
+            previousSearches += `<button id=${searches[i].ID} class="prvSearch">${searches[i].Title}</button>`;
         }
     }
     prvSearches.innerHTML = previousSearches;
     // $(".prvSearch").on("click", function (event) {
-    //     search(event.target.textContent);
-    //     currentCity.textContent = event.target.textContent;
-    // });
-}
-grabPrevSearches();
-
-// array to store search history
-// var searchHistory = [];
-
-// function grabPrevFinds() {
-//     var previousRecommends = "";
-//     var previousSearch = localStorage.getItem("");
-//     if (previousSearch) {
-//         searchHistory = JSON.parse(previousSearch);
-//         for (var i = 0; i < searches.length; i++) {
-//             // can add a linked button for previous recommendations
-//         }
-//     }
-//     // need DIV to place text or links for past searches from local storage
-// }
-
-// $('#search').on('click', searchMedia);
-
-// Data we need to pull for movies
-// data.results[0].id - Gives a movie or show id to pass to preview function
-// data.results[0].title - Movie title
-// data.results[0].poster_path - Movie poster
-// data.results[0].overview - Movie description
+        //     search(event.target.textContent);
+        //     currentCity.textContent = event.target.textContent;
+        // });
+    }
+    grabPrevSearches();
+    
+    $("#search").on("click", function() {
+        searchMedia();
+        grabPrevSearches();
+    });
+    $(".prvSearch").on("click", function(element) {
+        console.log("yay");
+        var match = {};
+        var previousSearches = localStorage.getItem("previousSearches");
+        if (previousSearches) {
+            for (var i = 0; i < previousSearches.length; i++) {
+                if (previousSearches[i].ID === element.id) {
+                    match = previousSearches[i];
+                }  
+            }
+        }
+        searchPastMedia(match);
+    });
+    // array to store search history
+    // var searchHistory = [];
+    
+    // function grabPrevFinds() {
+        //     var previousRecommends = "";
+        //     var previousSearch = localStorage.getItem("");
+        //     if (previousSearch) {
+            //         searchHistory = JSON.parse(previousSearch);
+            //         for (var i = 0; i < searches.length; i++) {
+                //             // can add a linked button for previous recommendations
+                //         }
+                //     }
+                //     // need DIV to place text or links for past searches from local storage
+                // }
+                
+                // $('#search').on('click', searchMedia);
+                
+                // Data we need to pull for movies
+                // data.results[0].id - Gives a movie or show id to pass to preview function
+                // data.results[0].title - Movie title
+                // data.results[0].poster_path - Movie poster
+                // data.results[0].overview - Movie description
 // data.results[0].video - To pull a preview if available, if false loop to another API for preview.
 // data.results[0].vote_average - Movie popularity, maybe create a loop to pull a new result if popularity is below set threshold.
 // data.results.total_pages - To limit how many results the API returns to avoid too much bandwidth utilization and accomidate heavier traffic.
