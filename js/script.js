@@ -10,9 +10,8 @@ var searches = [];
 var prvSearches = document.getElementById("history");
 var pastSearchBtn = document.getElementById("history");
 
-
+// Responsive Dropdowns
 media.onchange = function () {
-    // document.getElementById('genre').selectedIndex = 0;
     if (media.value === "movie") {
         genreDropDown.innerHTML = `<option value="28">Action</option>
         <option value="12">Adventure</option>
@@ -82,16 +81,18 @@ var searchMedia = function () {
     }
 };
 
-var searchPastMedia = function (mediaInfo) {
-    console.log(mediaInfo);
-    if (mediaInfo.Type == "tv") {
-        pastTv();
-    } else if (searches[i].Type == "movie") {
-        // pastMovie();
-    } else if (searches[i].Type == "game") {
-        // pastGame();
-    }
-};
+// Beginning Identifier to determine which API call to make on previous results "click"
+
+// var searchPastMedia = function (mediaInfo) {
+//     console.log(mediaInfo);
+//     if (mediaInfo.Type == "tv") {
+//         pastTv();
+//     } else if (searches[i].Type == "movie") {
+//         // pastMovie();
+//     } else if (searches[i].Type == "game") {
+//         // pastGame();
+//     }
+// };
 
 // Movie search function
 var movieSearch = function () {
@@ -103,8 +104,6 @@ var movieSearch = function () {
     fetch(tmdbUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                // console.log(data);
-                // console.log(data.results[0]);
                 var mediaType = media.value;
                 
                 randomId =
@@ -118,10 +117,7 @@ var movieSearch = function () {
                 movieRating = randomId.vote_average;
                 
                 findIdMovie();
-                // console.log(moviePoster);
-                // findId();
-                
-                // findServices();
+
                 var showInfo = {
                     ID: showId,
                     Title: movieName,
@@ -149,15 +145,13 @@ var tvSearch = function () {
                 // console.log(data);
                 randomId =
                 data.results[Math.floor(Math.random() * data.results.length)];
-                console.log(randomId);
                 
                 showId = randomId.id;
                 movieName = randomId.name;
                 moviePoster = randomId.poster_path;
                 movieDetails = randomId.overview;
                 movieRating = randomId.vote_average;
-                
-                console.log(showId);
+
                 var mediaType = media.value;
 
                 var showInfo = {
@@ -183,8 +177,6 @@ var tvSearch = function () {
 var gameSearch = function () {
     var platformSelect = platform.value;
     var genre = document.querySelector("#genre").value;
-    console.log(genre);
-    console.log(platformSelect);
     var rawgUrl =
     "https://api.rawg.io/api/games?key=d7bbd8310023473491e2cb8f933da6ba&genres=" +
     genre +
@@ -194,29 +186,19 @@ var gameSearch = function () {
     .then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 randomId =
                 data.results[Math.floor(Math.random() * data.results.length)];
-                console.log(randomId);
-                
                 gameId = randomId.id;
-                console.log(gameId);
                 gameName = randomId.name;
-                console.log(gameName);
                 gamePoster = randomId.background_image;
-                console.log(gamePoster);
                     gameRating = randomId.metacritic;
-                    console.log(gameRating);
                     var mediaType = media.value;
 
-                    // gameDetails = randomId.overview;
-                    // findId();
                     var gameInfo = {
                         ID: gameId,
                         Title: gameName,
                         Type: mediaType
                     }
-                    // findServices();
                     createGameElements();
                     setPreviousSearches(gameInfo);
                 });
@@ -227,9 +209,9 @@ var gameSearch = function () {
         .catch(function (error) {
             alert("Unable to connect to RAWG API!");
         });
-    console.log(rawgUrl);
 };
 
+// Locate Id of found media
 var findIdMovie = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/movie/" +
@@ -251,6 +233,7 @@ var findIdMovie = function () {
         });
 };
 
+// Locate Id of found media
 var findIdTv = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/tv/" +
@@ -272,6 +255,7 @@ var findIdTv = function () {
         });
 };
 
+// Available services for found recommendation
 var findServicesMovies = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/movie/" +
@@ -316,6 +300,7 @@ var findServicesMovies = function () {
         });
 };
 
+// Available services for found recommendation
 var findServicestv = function () {
     var previewUrl =
         "https://api.themoviedb.org/3/tv/" +
@@ -346,35 +331,37 @@ var findServicestv = function () {
         });
 };
 
-var pastTv = function (mediaInfo) {
-    console.log("hi");
-    // var Id = searches[i].ID;
+// Beginning functions for different Fetch calls based on media source previously found
+
+// var pastTv = function (mediaInfo) {
+//     console.log("hi");
+//     // var Id = searches[i].ID;
     
-    // var tmdbUrl =
-    // fetch(tmdbUrl).then(function (response) {
-    //     if (response.ok) {
-    //         response.json().then(function (data) {
+//     // var tmdbUrl =
+//     // fetch(tmdbUrl).then(function (response) {
+//     //     if (response.ok) {
+//     //         response.json().then(function (data) {
 
                                 
-    //             console.log(Id);
+//     //             console.log(Id);
                 
-    //             showId = id.id;
-    //             movieName = id.title;
-    //             moviePoster = id.poster_path;
-    //             movieDetails = id.overview;
-    //             movieRating = id.vote_average;
+//     //             showId = id.id;
+//     //             movieName = id.title;
+//     //             moviePoster = id.poster_path;
+//     //             movieDetails = id.overview;
+//     //             movieRating = id.vote_average;
                 
-    //             findIdMovie();
-    //             // console.log(moviePoster);
-    //             // findId();
+//     //             findIdMovie();
+//     //             // console.log(moviePoster);
+//     //             // findId();
                 
-    //             // findServices();
-    //         });
-    //     } else {
-    //         alert("Error: " + response.statusText);
-    //     }
-    // });
-}
+//     //             // findServices();
+//     //         });
+//     //     } else {
+//     //         alert("Error: " + response.statusText);
+//     //     }
+//     // });
+// }
 
 var createElements = function () {
     $("#foundDetails").html(movieDetails);
@@ -418,33 +405,13 @@ var createElements = function () {
     });
 };
 
+// Populates page with details of found game
 var createGameElements = function () {
     $("#moviePoster").attr("src", gamePoster);
     $("#title").html(gameName);
     $("#foundVotes").html("Entertain Me! Score: " + gameRating / 10 + "/10");
 };
 
-// var findProvider = function(data){
-//     }
-// }
-
-// var showPreview = function () {
-//     var previewUrl =
-//         "https://api.themoviedb.org/3/movie/" + showId + "?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
-//         fetch(previewUrl)
-//             .then(function (response) {
-//                 if (response.ok) {
-//                     response.json().then(function (data) {
-//                         console.log(data);
-//                     });
-//                 } else {
-//                     alert("Error: " + response.statusText);
-//                 }
-//             })
-//             .catch(function (error) {
-//                 alert("Unable to connect to TMDB!");
-//             });
-// };
 
 // starting localStorage functions
 function setPreviousSearches(id) {
@@ -459,6 +426,7 @@ function setPreviousSearches(id) {
     }
 }
 
+// Adds buttons dynamically based on previous search results
 function grabPrevSearches() {
     var previousSearches = "";
     var previousSearch = localStorage.getItem("previousSearches");
@@ -470,60 +438,68 @@ function grabPrevSearches() {
         }
     }
     prvSearches.innerHTML = previousSearches;
-    // $(".prvSearch").on("click", function (event) {
-        //     search(event.target.textContent);
-        //     currentCity.textContent = event.target.textContent;
-        // });
-    }
-    grabPrevSearches();
+};
+
+grabPrevSearches();
     
     $("#search").on("click", function() {
         searchMedia();
         grabPrevSearches();
     });
-    $(".prvSearch").on("click", function(element) {
-        console.log("yay");
-        var match = {};
-        var previousSearches = localStorage.getItem("previousSearches");
-        if (previousSearches) {
-            for (var i = 0; i < previousSearches.length; i++) {
-                if (previousSearches[i].ID === element.id) {
-                    match = previousSearches[i];
-                }  
-            }
-        }
-        searchPastMedia(match);
-    });
-    // array to store search history
-    // var searchHistory = [];
-    
-    // function grabPrevFinds() {
-        //     var previousRecommends = "";
-        //     var previousSearch = localStorage.getItem("");
-        //     if (previousSearch) {
-            //         searchHistory = JSON.parse(previousSearch);
-            //         for (var i = 0; i < searches.length; i++) {
-                //             // can add a linked button for previous recommendations
-                //         }
-                //     }
-                //     // need DIV to place text or links for past searches from local storage
-                // }
-                
-                // $('#search').on('click', searchMedia);
-                
-                // Data we need to pull for movies
-                // data.results[0].id - Gives a movie or show id to pass to preview function
-                // data.results[0].title - Movie title
-                // data.results[0].poster_path - Movie poster
-                // data.results[0].overview - Movie description
-// data.results[0].video - To pull a preview if available, if false loop to another API for preview.
-// data.results[0].vote_average - Movie popularity, maybe create a loop to pull a new result if popularity is below set threshold.
-// data.results.total_pages - To limit how many results the API returns to avoid too much bandwidth utilization and accomidate heavier traffic.
 
-// Data for TV
-// data.results[0].poster_path - TV poster or image
-// data.results[0].name - Title of show
-// data.results[0].overview - TV Description
+// Beginning function to recall previous searches "On Click"
+
+    // $(".prvSearch").on("click", function(element) {
+    //     console.log("yay");
+    //     var match = {};
+    //     var previousSearches = localStorage.getItem("previousSearches");
+    //     if (previousSearches) {
+    //         for (var i = 0; i < previousSearches.length; i++) {
+    //             if (previousSearches[i].ID === element.id) {
+    //                 match = previousSearches[i];
+    //             }  
+    //         }
+    //     }
+    //     searchPastMedia(match);
+    // });
+    
+    
+    // var findProvider = function(data){
+    //     }
+    // }
+    
+    // var showPreview = function () {
+    //     var previewUrl =
+    //         "https://api.themoviedb.org/3/movie/" + showId + "?api_key=159f40037d6a65fa5a6290ec992f31ce&language=en-US&sort_by=popularity.desc";
+    //         fetch(previewUrl)
+    //             .then(function (response) {
+    //                 if (response.ok) {
+    //                     response.json().then(function (data) {
+    //                         console.log(data);
+    //                     });
+    //                 } else {
+    //                     alert("Error: " + response.statusText);
+    //                 }
+    //             })
+    //             .catch(function (error) {
+    //                 alert("Unable to connect to TMDB!");
+    //             });
+    // };
+    
+    //=============== Notes for Fetch Calls ========================================================================= 
+    // Data we need to pull for movies
+    // data.results[0].id - Gives a movie or show id to pass to preview function
+    // data.results[0].title - Movie title
+    // data.results[0].poster_path - Movie poster
+    // data.results[0].overview - Movie description
+    // data.results[0].video - To pull a preview if available, if false loop to another API for preview.
+    // data.results[0].vote_average - Movie popularity, maybe create a loop to pull a new result if popularity is below set threshold.
+    // data.results.total_pages - To limit how many results the API returns to avoid too much bandwidth utilization and accomidate heavier traffic.
+    
+    // Data for TV
+    // data.results[0].poster_path - TV poster or image
+    // data.results[0].name - Title of show
+    // data.results[0].overview - TV Description
 // data.results[0].vote_average - give show a score out of 10
 //
 
