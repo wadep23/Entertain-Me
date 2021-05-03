@@ -401,7 +401,10 @@ var createGameElements = function () {
 //             });
 // };
 
-$("#search").on("click", searchMedia);
+$("#search").on("click", function() {
+    searchMedia();
+    grabPrevSearches();
+});
 
 // starting localStorage functions
 function setPreviousSearches(id) {
