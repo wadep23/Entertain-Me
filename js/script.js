@@ -3,6 +3,7 @@ var genreDropDown = document.querySelector("#genre");
 var platform = document.querySelector("#platform");
 
 media.onchange = function() {
+    document.getElementById('genre').selectedIndex = 0;
     if (media.value === "movie") {
         genre.innerHTML = 
         `<option value="28">Action</option>
