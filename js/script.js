@@ -372,15 +372,20 @@ var createElements = function () {
         border: "2px solid goldenrod",
         "box-shadow": "3px 3px 3px 3px black",
         "border-radius": "15px",
+        padding:"10px",
+        'text-align':'center'
     });
     $("#foundVotes").html("Entertain Me! Score: " + movieRating + "/10");
     $("#foundVotes").css({
-        height: "100px",
-        width: "200px",
+        height: "50px",
+        width: "300px",
         "margin-left": "1%",
         border: "2px solid goldenrod",
         "box-shadow": "3px 3px 3px 3px black",
         "border-radius": "15px",
+        'text-align':'center',
+        'font-weight':'bold',
+        'padding-top':'10px'
     });
     $("#moviePoster").attr(
         "src",
@@ -402,6 +407,8 @@ var createElements = function () {
         border: "2px solid goldenrod",
         "box-shadow": "3px 3px 3px 3px black",
         "border-radius": "15px",
+        width: '300px',
+        height: '150px'
     });
 };
 

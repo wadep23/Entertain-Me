@@ -24,6 +24,7 @@ main {
   padding-top: 1%;
   box-shadow: 
     inset -5px 5px 20px black;
+  width: 100%
 }
 
 select {
@@ -46,10 +47,12 @@ button:hover {
   font-weight: bold;
   border: 3px solid rgb(112, 7, 7);
 }
+
 footer{
   text-align: center;
   height: 50px;
   justify-content: center;
+  border-top: 2px solid goldenrod;
 }
 
 
@@ -57,13 +60,23 @@ footer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  white-space: nowrap;
+  text-align:left;
+  font-size:large
 }
 
-.results {
+/*#foundDetails {
   margin: 2%;
-  display: flex;
   padding: 10px;
   text-align: center;
+  width: 15%
+}
+
+#foundVotes {
+  margin: 2%;
+  padding: 10px;
+  text-align: center;
+  width: 15%
 }
 
 /* .trailer-details {
@@ -144,5 +157,6 @@ footer{
     flex-direction: column;
     flex-wrap: wrap;
     align-content: space-around;
-    margin-left: 1%;
+    margin-left: 10%;
   }
+
