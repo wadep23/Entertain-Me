@@ -308,16 +308,16 @@ var findServicestv = function () {
 
 var createElements = function(){
     $('#foundDetails').html(movieDetails);
-    $('#foundDetails').css({'width':'300px', 'height':'500px', 'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px' });
+    $('#foundDetails').css({'width':'300px', 'height':'500px', 'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px', 'text-align':'center', 'padding':'5px' });
     $('#foundVotes').html("Entertain Me! Score: " + movieRating + "/10");
-    $('#foundVotes').css({'height':'100px', 'width':'200px', 'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px' });
+    $('#foundVotes').css({'height':'50px', 'width':'300px', 'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px', 'text-align':'center', 'padding':'10px', 'font-weight':'bold' });
     $('#moviePoster').attr('src', 'https://image.tmdb.org/t/p/w500' + moviePoster);
     $('#moviePoster').css({'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px', 
     'padding':'10px', 'align-content':'center'});
     $('#title').html(movieName);
-    $('#title').css({'height':'100px', 'width':'200px', 'text-align':'center'});
+    $('#title').css({'height':'100px', 'width':'300px', 'text-align':'center'});
     $('#foundWhereAvailable').html(servicesArray.toString());
-    $('#foundWhereAvailable').css({'margin-left':'1%', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px' });
+    $('#foundWhereAvailable').css({'width':'300px', 'height':'100px', 'margin-left':'1%', 'padding':'10px', 'border':'2px solid goldenrod', 'box-shadow':'3px 3px 3px 3px black', 'border-radius':'15px' });
 
     
 };
