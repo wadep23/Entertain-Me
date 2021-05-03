@@ -4,11 +4,9 @@ var platform = document.querySelector("#platform");
 var servicesArray = [];
 
 media.onchange = function() {
-    // document.getElementById('genre').selectedIndex = 0;
-   
-
+    
     if (media.value === "movie") {
-        genre.innerHTML = 
+        genreDropDown.innerHTML = 
         `<option value="28">Action</option>
         <option value="12">Adventure</option>
         <option value="35">Comedy</option>
@@ -22,7 +20,7 @@ media.onchange = function() {
         `<option value="theaters">In Theaters</option>
         <option value="streaming">Streaming Service</option>`;
     } else if (media.value == "tv") {
-        genre.innerHTML = 
+        genreDropDown.innerHTML = 
         `<option value="10759">Action/Adventure</option>
         <option value="16">Animation</option>
         <option value="35">Comedy</option>
@@ -43,7 +41,7 @@ media.onchange = function() {
         `<option value="Streaming Service">Streaming Service</option>
         `
     } else {
-        genre.innerHTML =
+        genreDropDown.innerHTML =
         `<option value="action">Action</option>
         <option value="indie">Indie</option>
         <option value="adventure">Adventure</option>
