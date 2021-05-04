@@ -417,10 +417,16 @@ function grabPrevSearches() {
 };
 
 grabPrevSearches();
+
+var searchBtn = function () {
+    var money = document.querySelector("#search");
+    money.textContent = "Are you not Entertained?!";
+};
     
     $("#search").on("click", function() {
         searchMedia();
         grabPrevSearches();
+        searchBtn();
     });
 
 // Beginning function to recall previous searches "On Click"
