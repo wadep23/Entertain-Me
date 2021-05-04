@@ -331,38 +331,7 @@ var findServicestv = function () {
         });
 };
 
-// Beginning functions for different Fetch calls based on media source previously found
-
-// var pastTv = function (mediaInfo) {
-//     console.log("hi");
-//     // var Id = searches[i].ID;
-    
-//     // var tmdbUrl =
-//     // fetch(tmdbUrl).then(function (response) {
-//     //     if (response.ok) {
-//     //         response.json().then(function (data) {
-
-                                
-//     //             console.log(Id);
-                
-//     //             showId = id.id;
-//     //             movieName = id.title;
-//     //             moviePoster = id.poster_path;
-//     //             movieDetails = id.overview;
-//     //             movieRating = id.vote_average;
-                
-//     //             findIdMovie();
-//     //             // console.log(moviePoster);
-//     //             // findId();
-                
-//     //             // findServices();
-//     //         });
-//     //     } else {
-//     //         alert("Error: " + response.statusText);
-//     //     }
-//     // });
-// }
-
+// Function to populate results elements
 var createElements = function () {
     $("#foundDetails").html(movieDetails);
     $("#foundDetails").css({
