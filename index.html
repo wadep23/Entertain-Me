@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/media/favicon.jpg">
+
+    <!-- UIkit link -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.20/dist/css/uikit.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+
+    <!--UIkit JS scripts-->
+
+
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -20,57 +28,88 @@
     </header>
 
     <main>
-        <!-- first drop down -->
-        <div id="side-bar-left">
-            <div id="media-container">
-                <label for="media-type">Choose Your Media!</label>
-                <br>
-                <select id="media" name="media-type">
-                    <option value="">Choose One</option>
-                    <option value="movie">Movie</option>
-                    <option value="tv">Television</option>
-                    <option value="game">Video Game</option>
-                </select>
-            </div>
-            <!-- second drop down -->
-            <div id="genre-container" class="hide">
-                <label for="genre">Choose a Genre!</label>
-                <br>
-                <select id="genre" name="genre">
-                    <option value="">Genre</option>
-                </select>
-            </div>
-            <!-- third drop down -->
-            <div id="platform-container">
-                <label for="platform">Choose a Platform!</label>
-                <br>
-                <select id="platform" name="platform">
-                    <option value="">Choose One</option>
-                </select>
-                <!-- next dropdown, what will it be? -->
-                <div id="searchBtn">
-                    <button id="search" type="button">Show Me The Money!</button>
+        <div class="uk-width-small-3-10">
+            <!-- first drop down -->
+            <br>
+            <br>
+            <div id="side-bar-left">
+                <div id="media-container">
+                    <div class="uk-button uk-form-select" data-uk-form-select>
+                        <div id="media-container">
+                            <label for="media-type">Choose Your Media!</label>
+                            <br>
+                            <select id="media" name="media-type">
+                                <option value="">Choose One</option>
+                                <option value="movie">Movie</option>
+                                <option value="tv">Television</option>
+                                <option value="game">Video Game</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <div id="history">Previous Recomendations</div>
+                <!-- second drop down -->
+                <div class="uk-button uk-form-select" data-uk-form-select>
+                    <div id="genre-container" class="hide">
+                        <label for="genre">Choose a Genre!</label>
+                        <br>
+                        <select id="genre" name="genre">
+                            <option value="">Genre</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- third drop down -->
+                <div class="uk-button uk-form-select" data-uk-form-select>
+                    <div id="platform-container">
+                        <label for="platform">Choose a Platform!</label>
+                        <br>
+                        <select id="platform" name="platform">
+                            <option value="">Choose One</option>
+                        </select>
+                        <!-- next dropdown, what will it be? -->
+                        <div id="searchBtn">
+                            <button id="search" class="uk-button uk-button-default">Show Me The Money!</button>
+                        </div>
+                        <br>
+                        <div id="history">Want to See Previous Recommendations?</div>
+                    </div>
+                </div>
+
             </div>
-
-            <div id="similar-content"></div>
         </div>
-        <div id="media-content"></div>
-        <div class="media-content">
-            <h1 id="title"></h1>
-            <img id="moviePoster">
-            <div class="results" id="foundDetails"></div>
 
+
+        <div class="uk-width-small-4-10">
+            <div id="media-content"></div>
+            <div class="media-content">
+                <h1 id="title"></h1>
+                <img id="moviePoster">
+            </div>
+        </div>
+
+        <div class="uk-width-small-3-10">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <div class="results" id="foundVotes"></div>
+            <br>
+            <div class="results" id="foundDetails"></div>
+            <br>
             <div class="results" id="foundWhereAvailable"></div>
         </div>
 
+        <div class="uk-width-small-2-10">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+        </div>
+
     </main>
-
-    <div id="related-content"></div>
-
     <footer>
         <h3>Master crafted by Team Argonaut&#169;</h3>
     </footer>
@@ -78,5 +117,7 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.20/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.20/dist/js/uikit-icons.min.js"></script>
 </body>
 </html>
