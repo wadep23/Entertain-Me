@@ -26,8 +26,8 @@ SO THAT I may spend less time searching and more time watching/playing.
 ![Screen Shot 2021-05-03 at 4 34 52 PM](https://user-images.githubusercontent.com/79377937/116936492-8d5b2a80-ac2d-11eb-94eb-7ab2b06f62b3.png)
 
 #Link to Depolyed App: 
-https://bobtarino.github.io/Entertain-Me/
+https://wadep23.github.io/Entertain-Me/
 
 Link to Repo:
-https://github.com/Cantalorian/Entertain-Me
+https://github.com/wadep23/Entertain-Me
 
